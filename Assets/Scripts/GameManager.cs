@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private UIManager uiManager;
+
     [SerializeField] private Pin[] pins;
 
     private bool isGamePlaying = false;
@@ -31,18 +33,34 @@ public class GameManager : MonoBehaviour
 
     void NextThrow()
     {
+        int fallenPins = CalculateFallenPins();
+        scoreManager.SetFrameScore(fallenPins);
+
         if(scoreManager.currentFrame == 0)
         {
-            Debug.Log($"Game over. Your total score is {scoreManager.CalculateTotalScore()}");
+            uiManager.ShowGameOver(scoreManager.CalculateTotalScore());
+            //Debug.Log($"Game over. Your total score is {scoreManager.CalculateTotalScore()}");
+            return;
         }
-        else
+
+        //Calculate the frame total from UI
+        int frameTotal = 0;
+        for(int i = 0; i < scoreManager.currentFrame - 1; i++)
+        {
+            frameTotal += scoreManager.GetFrameScores()[i];
+            uiManager.SetFrameTotal(i, frameTotal);
+        }
+
+        player.StartThrow();
+
+        /*else
         {
             Debug.Log($"Frame {scoreManager.currentFrame} - Throw {scoreManager.currentThrow}");
             scoreManager.SetFrameScore(CalculateFallenPins());
             Debug.Log($"Current score : {scoreManager.CalculateTotalScore()}");
 
             player.StartThrow();
-        }
+        }*/
     }
 
     public void ResetAllPins()

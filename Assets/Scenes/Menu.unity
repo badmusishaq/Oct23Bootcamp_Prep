@@ -1623,7 +1623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014821327}
   m_LocalRotation: {x: -0, y: -0.13058084, z: -0, w: 0.99143773}
-  m_LocalPosition: {x: 0.249, y: -0.41, z: -4.955}
+  m_LocalPosition: {x: 0.69, y: -0.29, z: -4.83}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2683,7 +2683,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1451495561}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761325198}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1451495561
 MonoBehaviour:
   m_ObjectHideFlags: 0
